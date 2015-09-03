@@ -5,13 +5,12 @@ function fadeOut(text, color, size, posX, posY, font ) {
         alpha = 1,
         width = ctx.measureText(text)
 
-    ctx.font="80px Arial";
+    ctx.font= size + "px " + font;
 
-    console.log(ctx.font);
 
     interval = setInterval(function () {
         ctx.clearRect(posX,posY,posX + width,c.height);
-        ctx.fillStyle = 'rgba(' + 0 + ',' + 0 + ',' + 0 + ',' + alpha + ')';
+        ctx.fillStyle = hexToRgb(color)+ alpha + ')';
         ctx.fillText(text, c.width / 2, c.height / 2);
         alpha = alpha - 0.03;
         if (alpha < 0) {
@@ -20,3 +19,9 @@ function fadeOut(text, color, size, posX, posY, font ) {
         }
     }, 50);
 };
+
+function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return 'rgba(' + parseInt(result[1], 16) + ',' + parseInt(result[2], 16) + ',' + parseInt(result[3], 16) + ',';
+    }
+
