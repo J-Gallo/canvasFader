@@ -5,9 +5,8 @@ function fadeOut(text, color, size, posX, posY, font ) {
         alpha = 1
     ctx.font= size + "px " + font;
     var textSize = ctx.measureText(text);
-
     interval = setInterval(function () {
-        ctx.clearRect(posX,posY + 1,textSize.width, - size / 1.2);
+        ctx.clearRect(posX,posY,textSize.width, - size / 1.2 - 70);
 
         ctx.fillStyle = hexToRgb(color)+ alpha + ')';
         ctx.fillText(text, posX, posY);
