@@ -4,18 +4,17 @@ function fadeOut(text, color, size, posX, posY, font ) {
         interval,
         alpha = 1
     ctx.font= size + "px " + font;
-    var width = ctx.measureText(text)
+    var textSize = ctx.measureText(text);
 
-    console.log(width);
     interval = setInterval(function () {
-        ctx.clearRect(posX,posY + 1,width.width, - size / 1.2);
+        ctx.clearRect(posX,posY + 1,textSize.width, - size / 1.2);
 
         ctx.fillStyle = hexToRgb(color)+ alpha + ')';
         ctx.fillText(text, posX, posY);
         alpha = alpha - 0.03;
         if (alpha < 0) {
             clearInterval(interval);
-            ctx.clearRect(0,0,c.width,c.height);
+            ctx.clearRect(posX,posY + 1,textSize.width, - size / 1.2);
         }
     }, 50);
 };
