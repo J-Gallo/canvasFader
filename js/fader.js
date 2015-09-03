@@ -9,9 +9,10 @@ function fadeOut(text, color, size, posX, posY, font ) {
 
 
     interval = setInterval(function () {
-        ctx.clearRect(posX,posY,posX + width,c.height);
+        ctx.clearRect(200,posY + 1,2000, - size / 1.2);
+
         ctx.fillStyle = hexToRgb(color)+ alpha + ')';
-        ctx.fillText(text, c.width / 2, c.height / 2);
+        ctx.fillText(text, posX, posY);
         alpha = alpha - 0.03;
         if (alpha < 0) {
             clearInterval(interval);
